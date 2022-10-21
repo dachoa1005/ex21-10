@@ -2,27 +2,29 @@
 
 using namespace std;
 
+int total_memory_leak = 0;
+
 void memory_leak()
 {
-    int *ptr1 = new int;
     int *ptr = (int*)malloc(sizeof(int));
     cout << "Memory allocated: " << sizeof(ptr) << " bytes" << endl;
-    
+    total_memory_leak += sizeof(ptr);   
 }
 
-void handle_memory_leak()
+void avoid_memory_leak()
 {
-    int *ptr = new int[10000];
-    // show how many bytes are allocated
+    int *ptr = (int*)malloc(sizeof(int));
     cout << "Memory allocated: " << sizeof(ptr) << " bytes" << endl;
-    delete[] ptr;
-    // after delete, the memory is freed
-    cout << "After delete, memory allocated: " << sizeof(ptr) << " bytes" << endl;
+    free(ptr);
 }
 
 int main(int argc, char const *argv[])
 {
-    memory_leak();
-    handle_memory_leak();
+    total_memory_leak = 0;
+    for (int i = 0; i < 100; i++)
+    {
+        avoid_memory_leak();
+    }
+    cout << "Total memory leak: " << total_memory_leak << " bytes" << endl;
     return 0;
 }
