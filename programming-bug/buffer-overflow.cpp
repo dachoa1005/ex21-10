@@ -20,7 +20,7 @@ char* fix(char buffer[])
 int main(int argc, char const *argv[])
 {
     char buffer[] = "Hello Worldaaaaaaaaaaa";
-    // cout << buffer_overflow(buffer) << endl; // This will cause buffer overflow 
+    // cout << buffer_overflow(buffer) << endl; // core dump
     cout << fix(buffer) << endl;
     return 0;
 }

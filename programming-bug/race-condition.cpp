@@ -11,7 +11,7 @@ int number = 0;
 
 void *inc_by_1(void *)
 {
-    while (1)
+    while (true)
     {
         usleep(0.4 * SECOND);
         number += 1;
@@ -21,7 +21,7 @@ void *inc_by_1(void *)
 
 void *dec_by_2(void *)
 {
-    while (1)
+    while (true)
     {
         usleep(0.6 * SECOND);
         number -= 2;

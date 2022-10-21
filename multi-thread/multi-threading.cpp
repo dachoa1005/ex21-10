@@ -9,7 +9,7 @@ using namespace std;
 
 void *printA(void *)
 {
-    while (1)
+    while (true)
     {
         usleep(0.2 * SECOND);
         cout << "A" << endl;
