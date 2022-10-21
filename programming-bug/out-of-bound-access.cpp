@@ -9,7 +9,6 @@ char* out_of_bound(char str[], int n)
     for (int i = 0; i < n; i++)
     {
         result[i] = str[i];
-        // cout << str[i];
     }
     return result;
 }

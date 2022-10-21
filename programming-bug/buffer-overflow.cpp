@@ -3,30 +3,24 @@
 
 using namespace std;
 
-char* buffer_overflow(char* str, int n) 
+char* buffer_overflow(char buffer[])
 {
-    char* result = new char[n];
-    strcpy(result, str);
+    char *result = new char[10];
+    strcpy(result, buffer);
     return result;
 }
 
-char* fix(char* str, int n) 
+char* fix(char buffer[])
 {
-    char* result = new char[n];
-    for (int i = 0; i < strlen(str); i++) 
-    {
-        result[i] = str[i];
-    }
+    char *result = new char[strlen(buffer)];
+    strcpy(result, buffer);
     return result;
 }
 
 int main(int argc, char const *argv[])
 {
-    char buffer[10];
-    char str[] = "Hello World, this is a buffer overflow";
-    cout << buffer_overflow(str, 10);
-    cout << endl;
-    
-    cout << fix(str, 10);
-    cout << endl;
+    char buffer[] = "Hello Worldaaaaaaaaaaaaaaaa";
+    // cout << buffer_overflow(buffer) << endl;
+    cout << fix(buffer) << endl;
+    return 0;
 }
