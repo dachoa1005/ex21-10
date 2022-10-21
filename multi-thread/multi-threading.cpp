@@ -1,47 +1,50 @@
 #include <iostream>
 #include <pthread.h>
-#include <thread>
 #include <chrono>
 #include <unistd.h>
 
 using namespace std;
 
-void printA()
+#define SE 1000000
+
+void *printA(void *)
 {
-    while (true)
+    while (1)
     {
-        sleep(0.2);
+        usleep(0.2 * SE);
         cout << "A" << endl;
     }
 }
 
-void printB()
+void *printB(void *)
 {
     while (true)
     {
-        sleep(0.3);
+        usleep(0.3 * SE);
         cout << "B" << endl;
     }
 }
 
-void printC()
+void *printC(void *)
 {
     while (true)
     {
-        sleep(0.5);
+        usleep(0.5 * SE);
         cout << "C" << endl;
     }
 }
 
 int main(int argc, char const *argv[])
 {
-    thread th1(printA);
-    thread th2(printB);
-    thread th3(printC);
+    pthread_t threadA, threadB, threadC;
+    
+    pthread_create(&threadA, NULL, printA, NULL);
+    pthread_create(&threadB, NULL, printB, NULL);
+    pthread_create(&threadC, NULL, printC, NULL);
 
-    th1.join();
-    th2.join();
-    th3.join();
+    pthread_join(threadA, NULL);
+    pthread_join(threadB, NULL);
+    pthread_join(threadC, NULL);
 
     return 0;
 }
