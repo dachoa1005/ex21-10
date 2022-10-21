@@ -1,25 +1,28 @@
-// Program with memory leak
-#include <bits/stdc++.h>
+#include <iostream>
+
 using namespace std;
 
-// function with memory leak
-void func_to_show_mem_leak()
+void memory_leak()
 {
-	int* ptr = new int(5);
-
-	// body
-
-	// return without deallocating ptr
-	return;
+    int *ptr1 = new int;
+    int *ptr = (int*)malloc(sizeof(int));
+    cout << "Memory allocated: " << sizeof(ptr) << " bytes" << endl;
+    
 }
 
-// driver code
-int main()
+void handle_memory_leak()
 {
+    int *ptr = new int[10000];
+    // show how many bytes are allocated
+    cout << "Memory allocated: " << sizeof(ptr) << " bytes" << endl;
+    delete[] ptr;
+    // after delete, the memory is freed
+    cout << "After delete, memory allocated: " << sizeof(ptr) << " bytes" << endl;
+}
 
-	// Call the function
-	// to get the memory leak
-	func_to_show_mem_leak();
-
-	return 0;
+int main(int argc, char const *argv[])
+{
+    memory_leak();
+    handle_memory_leak();
+    return 0;
 }
