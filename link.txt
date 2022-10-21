@@ -1,2 +1,0 @@
-https://aticleworld.com/what-is-memory-leak-in-c-c-how-can-we-avoid/
-https://www.pcgamer.com/dealing-with-memory-leaks/
