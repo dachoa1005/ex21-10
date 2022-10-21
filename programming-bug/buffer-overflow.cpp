@@ -19,8 +19,8 @@ char* fix(char buffer[])
 
 int main(int argc, char const *argv[])
 {
-    char buffer[] = "Hello Worldaaaaaaaaaaaaaaaa";
-    // cout << buffer_overflow(buffer) << endl;
+    char buffer[] = "Hello Worldaaaaaaaaaaa";
+    // cout << buffer_overflow(buffer) << endl; // This will cause buffer overflow 
     cout << fix(buffer) << endl;
     return 0;
 }

@@ -1,30 +1,24 @@
 #include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
-
-int total_memory_leak = 0;
 
 void memory_leak()
 {
     int *ptr = (int*)malloc(sizeof(int));
-    cout << "Memory allocated: " << sizeof(ptr) << " bytes" << endl;
-    total_memory_leak += sizeof(ptr);   
+    return; // return without free ptr causes memory leak  
 }
 
 void avoid_memory_leak()
 {
     int *ptr = (int*)malloc(sizeof(int));
-    cout << "Memory allocated: " << sizeof(ptr) << " bytes" << endl;
-    free(ptr);
+    free(ptr); // free ptr to avoid memory leak
+    return;
 }
 
 int main(int argc, char const *argv[])
 {
-    total_memory_leak = 0;
-    for (int i = 0; i < 100; i++)
-    {
-        avoid_memory_leak();
-    }
-    cout << "Total memory leak: " << total_memory_leak << " bytes" << endl;
+    memory_leak();
+    avoid_memory_leak();
     return 0;
 }

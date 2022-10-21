@@ -5,13 +5,13 @@
 
 using namespace std;
 
-#define SE 1000000
+#define SECOND 1000000 // 1 second = 1000000 microseconds
 
 void *printA(void *)
 {
     while (1)
     {
-        usleep(0.2 * SE);
+        usleep(0.2 * SECOND);
         cout << "A" << endl;
     }
 }
@@ -20,7 +20,7 @@ void *printB(void *)
 {
     while (true)
     {
-        usleep(0.3 * SE);
+        usleep(0.3 * SECOND);
         cout << "B" << endl;
     }
 }
@@ -29,7 +29,7 @@ void *printC(void *)
 {
     while (true)
     {
-        usleep(0.5 * SE);
+        usleep(0.5 * SECOND);
         cout << "C" << endl;
     }
 }
